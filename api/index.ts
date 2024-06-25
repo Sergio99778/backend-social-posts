@@ -1,11 +1,11 @@
-const express = require("express");
-const config = require("../config");
-const user = require("./components/user/network");
+import express from "express";
+import { config } from "../config";
+import { userRouter } from "./components/user/network";
 
 const app = express();
 
 // ROUTING
-app.use("/api/user", user);
+app.use("/api/user", userRouter);
 
 app.listen(config.api.port, () => {
   console.log(`Server is running on port ${config.api.port}`);

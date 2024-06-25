@@ -1,11 +1,8 @@
-import express from "express";
-import { Request, Response } from "express";
-import { error, success } from "../../../network/response";
+import { Request, Response, Router } from "express";
+import { success } from "../../../network/response";
 
-const router = express.Router();
+export const userRouter = Router();
 
-router.get("/", function (req: Request, res: Response) {
+userRouter.get("/", function (req: Request, res: Response) {
   success(req, res, "User", 200);
 });
-
-module.exports = router;
