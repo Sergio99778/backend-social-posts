@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 export const success = function (
   req: Request,
   res: Response,
-  message: string,
+  message: Record<string, any> | Record<string, any>[],
   status: number
 ) {
   res.status(status || 200).send({
