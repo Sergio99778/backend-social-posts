@@ -5,18 +5,25 @@ const db: Record<string, any> = {
   ],
 };
 
-export function list(table: string): any[] {
+async function list(table: string): Promise<any[]> {
   return db[table];
 }
-export function get(table: string, id: string) {
+function get(table: string, id: string) {
   return db[table].find((item: Record<string, any>) => item.id === id) || null;
 }
-export function upsert(table: string, data: Record<string, any>) {
+function upsert(table: string, data: Record<string, any>) {
   if (!db[table]) {
     db[table] = [];
   }
   db[table].push(data);
 }
-export function remove(table: string, id: string) {
+function remove(table: string, id: string) {
   db[table] = db[table].filter((item: Record<string, any>) => item.id !== id);
 }
+
+export const store = {
+  list,
+  get,
+  upsert,
+  remove,
+};
