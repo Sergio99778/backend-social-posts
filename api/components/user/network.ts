@@ -22,6 +22,7 @@ userRouter.get("/:id", function (req: Request, res: Response) {
     .then((user: User) => {
       if (!user) {
         error(req, res, "User not found", 404, "User not found");
+        return;
       }
       success(req, res, user, 200);
     })
