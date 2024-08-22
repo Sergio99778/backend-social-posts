@@ -1,4 +1,4 @@
-import { Store } from "../../../store/dummy";
+import { Store } from "../../../store/interfaces/Store";
 
 const TABLE = "user";
 
