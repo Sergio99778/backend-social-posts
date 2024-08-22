@@ -1,6 +1,8 @@
+import { Store } from "../../../store/dummy";
+
 const TABLE = "user";
 
-export const usersController = function (injectedStore: any) {
+export const usersController = function (injectedStore: Store) {
   const store = injectedStore || require("../../../store/dummy");
 
   const list = function () {
