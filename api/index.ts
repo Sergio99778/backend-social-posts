@@ -4,6 +4,9 @@ import { userRouter } from "./components/user/network";
 
 const app = express();
 
+// MIDDLEWARE
+app.use(express.json());
+
 // ROUTING
 app.use("/api/user", userRouter);
 
