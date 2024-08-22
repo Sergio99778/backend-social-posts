@@ -2,18 +2,22 @@ import { Store } from "../../../store/interfaces/Store";
 
 const TABLE = "user";
 
-export const usersController = function (injectedStore: Store) {
-  const store = injectedStore || require("../../../store/dummy");
+class UsersController {
+  private store: Store;
 
-  const list = function () {
-    return store.list(TABLE);
-  };
+  constructor(injectedStore: Store) {
+    this.store = injectedStore || require("../../../store/dummy");
+  }
 
-  const get = function (id: string) {
-    return store.get(TABLE, id);
-  };
+  list() {
+    return this.store.list(TABLE);
+  }
 
-  const upsert = function (data: any) {
+  get(id: string) {
+    return this.store.get(TABLE, id);
+  }
+
+  upsert(data: any) {
     const user = {
       name: data.name,
       id: data.id,
@@ -23,17 +27,12 @@ export const usersController = function (injectedStore: Store) {
       user.id = data.id;
     }
 
-    return store.upsert(TABLE, user);
-  };
+    return this.store.upsert(TABLE, user);
+  }
 
-  const remove = function (id: string) {
-    return store.remove(TABLE, id);
-  };
+  remove(id: string) {
+    return this.store.remove(TABLE, id);
+  }
+}
 
-  return {
-    list,
-    get,
-    upsert,
-    remove,
-  };
-};
+export { UsersController };

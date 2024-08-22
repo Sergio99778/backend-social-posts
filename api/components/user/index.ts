@@ -1,4 +1,4 @@
 import { store } from "../../../store/dummy";
-import { usersController } from "./controller";
+import { UsersController } from "./controller";
 
-export const usersControllerStore = usersController(store);
+export const usersControllerStore = new UsersController(store);
