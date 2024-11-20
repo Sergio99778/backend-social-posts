@@ -6,7 +6,7 @@ import { User } from "../../../store/interfaces/User";
 export const userRouter = Router();
 
 userRouter.get("", function (req: Request, res: Response) {
-  usersControllerStore
+  return usersControllerStore
     .list()
     .then((users: User[]) => {
       success(req, res, users, 200);
@@ -17,7 +17,7 @@ userRouter.get("", function (req: Request, res: Response) {
 });
 
 userRouter.get("/:id", function (req: Request, res: Response) {
-  usersControllerStore
+  return usersControllerStore
     .get(req.params.id)
     .then((user: User) => {
       if (!user) {

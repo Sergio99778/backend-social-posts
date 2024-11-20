@@ -6,7 +6,7 @@ export const success = function (
   message: Record<string, any> | Record<string, any>[],
   status: number
 ) {
-  res.status(status || 200).send({
+  return res.status(status || 200).send({
     error: false,
     status: status || 200,
     body: message,
@@ -21,7 +21,7 @@ export const error = function (
   details: string
 ) {
   console.error(`[response error] ${details}`);
-  res.status(status || 500).send({
+  return res.status(status || 500).send({
     error: message || "Internal server error",
     status: status || 500,
     body: false,
